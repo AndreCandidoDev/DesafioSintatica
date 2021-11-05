@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{% url 'avaliacao_create' filme.id %}" class="btn btn-primary">Avaliar filme</a>
+        </div>
+        <div class="col-md-6">
+            <p>Média das avaliações: {{ media }}</p>
+            <p>Total de avaliações: {{ total }}</p>
+        </div>
+    </div>
+    <br><br>
+    {% for avaliacao in avaliacoes %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <p><b>{{avaliacao.nome_completo}}</b></p>
+                        <p>Avaliou com a nota: <b>{{ avaliacao.avaliacao }}</b></p>
+                        <p>Comentário:</p>
+                        <p>{{ avaliacao.comentario }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
